@@ -98,7 +98,10 @@ gulp.task('commonjs', function() {
   return gulp.src('app/js/common.js')
       .pipe(gulp.dest('dist/js'))
 })
-
+gulp.task('jqjs', function() {
+  return gulp.src('app/js/jquery.js')
+      .pipe(gulp.dest('dist/js'))
+})
 // Cleaning 
 gulp.task('clean', function() {
   return del.sync('dist').then(function(cb) {
@@ -123,7 +126,7 @@ gulp.task('build', function(callback) {
   runSequence(
     'clean:dist',
     'sass',
-    ['useref', 'images', 'fonts', 'commonjs'],
+    ['useref', 'images', 'fonts', 'commonjs', 'jqjs'],
     callback
   )
 })
